@@ -1,11 +1,10 @@
-# Ember & Oak — Coffee Shop Landing Page
+# Ember & Oak - Coffee Shop Landing Page
 
 A single-page demo site for a fictional Edinburgh coffee house, built as a
 template for real coffee shop clients. Dark espresso-and-gold theme, a video
-hero, animated sections, and a Google Maps location card that opens straight
-into Apple Maps or Google Maps depending on the visitor's device.
+hero, animated sections, and a Google Maps location card.
 
-**Stack:** Next.js (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion · React Icons
+**Stack:** Next.js (App Router) · TypeScript · Tailwind · Framer Motion · React Icons
 
 ---
 
@@ -54,7 +53,7 @@ coffee-landing/
         ├── hero-poster.jpg   # Poster frame shown before the video loads
         ├── about-barista.jpg
         ├── menu/             # espresso.jpg, latte.jpg, cappuccino.jpg
-        └── avatars/          # avatar-1.jpg … avatar-5.jpg
+        └── testimonial-avatars/          # avatar-1.jpg … avatar-5.jpg
 ```
 
 Sections render in this order (edit in `src/app/page.tsx`):
@@ -78,9 +77,9 @@ filename. Just update the `image` field to match) and the menu grid updates
 automatically, no changes needed in `MenuHighlights.tsx` itself.
 
 ### 3. Testimonials
-Edit `src/data/testimonials.ts`. Same pattern — name, location, quote,
+Edit `src/data/testimonials.ts`. Same pattern: name, location, quote,
 star rating (1–5), and an avatar path. Drop square photos into
-`public/images/avatars/` (roughly 400×400px works well; they're cropped to a
+`public/images/testimonial-avatars/` (roughly 400×400px works well; they're cropped to a
 circle).
 
 ### 4. Hero video
@@ -113,7 +112,7 @@ variables are defined in `src/app/globals.css` under `:root` and `@theme
 inline`. Change a hex value there and it updates everywhere that token is
 used.
 
-Fonts are loaded via `next/font/google` in `src/app/layout.tsx` — swap
+Fonts are loaded via `next/font/google` in `src/app/layout.tsx`. Swap
 `Playfair_Display` or `Manrope` for different Google Fonts if needed.
 
 ### 7. Animations
