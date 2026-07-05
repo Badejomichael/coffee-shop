@@ -95,7 +95,7 @@ export default function Testimonials() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.4 }}
-              className="flex w-full flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 md:w-[320px]"
+              className="flex flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 !w-full md:!w-[360px]"
             >
               <div className="flex items-center gap-1 text-ember">
                 {Array.from({ length: t.rating }).map((_, i) => (
