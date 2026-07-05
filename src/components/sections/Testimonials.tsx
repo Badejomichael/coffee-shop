@@ -37,7 +37,7 @@ export default function Testimonials() {
   const scroll = (direction: "left" | "right") => {
     const el = scrollerRef.current;
     if (!el) return;
-    const amount = el.clientWidth * 0.8 * (direction === "left" ? -1 : 1);
+    const amount = el.clientWidth * (direction === "left" ? -1 : 1);
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
 
@@ -95,7 +95,7 @@ export default function Testimonials() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.4 }}
-              className="flex w-[82%] flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 sm:w-[320px]"
+              className="flex w-full flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 sm:w-[320px]"
             >
               <div className="flex items-center gap-1 text-ember">
                 {Array.from({ length: t.rating }).map((_, i) => (
