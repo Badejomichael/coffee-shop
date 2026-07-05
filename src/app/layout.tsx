@@ -16,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Ember & Oak — Coffee Roasted With Intent",
+  title: "Ember & Oak - Coffee Roasted With Intent",
   description:
     "Ember & Oak is a coffee house on Victoria Street, Edinburgh. Hand-roasted beans, slow espresso, and a room worth lingering in.",
 };
@@ -28,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${manrope.variable}`}>
+      <head>
+        <link rel="icon" type="image/png" href="/images/logo.png" />
+      </head>
       <body className="bg-linen text-bark antialiased">{children}</body>
     </html>
   );

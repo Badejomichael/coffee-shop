@@ -68,3 +68,9 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+@media (max-width: 768px) {
+  .large-screen-navbar-btn {
+    display: none !important;
+  }
+}

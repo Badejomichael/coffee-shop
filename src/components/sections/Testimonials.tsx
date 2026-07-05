@@ -4,13 +4,35 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { fadeInUp } from "@/animations/variants";
 import { testimonials } from "@/data/testimonials";
 
 export default function Testimonials() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft < maxScroll - 8);
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     const el = scrollerRef.current;
@@ -18,6 +40,13 @@ export default function Testimonials() {
     const amount = el.clientWidth * 0.8 * (direction === "left" ? -1 : 1);
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
+
+  const arrowButtonClass = (enabled: boolean) =>
+    `flex h-11 w-11 items-center justify-center rounded-full border transition-colors ${
+      enabled
+        ? "border-ivory/20 text-ivory hover:border-ember hover:text-ember"
+        : "cursor-not-allowed border-ivory/5 text-ivory/20"
+    }`;
 
   return (
     <section id="testimonials" className="bg-ink px-6 py-28 md:px-10">
@@ -27,25 +56,28 @@ export default function Testimonials() {
             eyebrow="Word on the Street"
             title={
               <>
-                What people tell <em className="italic text-ember">us</em>
+                What keeps them <em className="italic text-ember">coming back</em>
               </>
             }
             tone="dark"
             align="left"
           />
 
+          {/* Desktop arrows */}
           <div className="hidden gap-3 md:flex">
             <button
               onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
               aria-label="Scroll testimonials left"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-ember hover:text-ember"
+              className={arrowButtonClass(canScrollLeft)}
             >
               <FiArrowLeft />
             </button>
             <button
               onClick={() => scroll("right")}
+              disabled={!canScrollRight}
               aria-label="Scroll testimonials right"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-ember hover:text-ember"
+              className={arrowButtonClass(canScrollRight)}
             >
               <FiArrowRight />
             </button>
@@ -54,7 +86,7 @@ export default function Testimonials() {
 
         <div
           ref={scrollerRef}
-          className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 sm:gap-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {testimonials.map((t) => (
             <motion.article
@@ -63,7 +95,7 @@ export default function Testimonials() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.4 }}
-              className="flex w-[280px] flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 sm:w-[320px]"
+              className="flex w-[82%] flex-none snap-start flex-col gap-5 rounded-2xl border border-ivory/10 bg-ink-soft p-7 sm:w-[320px]"
             >
               <div className="flex items-center gap-1 text-ember">
                 {Array.from({ length: t.rating }).map((_, i) => (
@@ -92,6 +124,26 @@ export default function Testimonials() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        {/* Mobile arrows */}
+        <div className="flex justify-center gap-3 md:hidden">
+          <button
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            aria-label="Scroll testimonials left"
+            className={arrowButtonClass(canScrollLeft)}
+          >
+            <FiArrowLeft />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            aria-label="Scroll testimonials right"
+            className={arrowButtonClass(canScrollRight)}
+          >
+            <FiArrowRight />
+          </button>
         </div>
       </div>
     </section>

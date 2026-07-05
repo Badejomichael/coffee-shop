@@ -7,12 +7,11 @@ import { GiCoffeeCup, GiCoffeeBeans } from "react-icons/gi";
 import { FaStar } from "react-icons/fa";
 import { heroReveal, staggerContainer, fadeInUp } from "@/animations/variants";
 import Button from "@/components/ui/Button";
-import EmberField from "@/components/ui/EmberField";
 import MenuToggle from "@/components/ui/MenuToggle";
 
 const navLinks = [
   { label: "Menu", href: "#menu", icon: GiCoffeeCup },
-  { label: "Our Story", href: "#about", icon: GiCoffeeBeans },
+  { label: "About", href: "#about", icon: GiCoffeeBeans },
   { label: "Visit Us", href: "#location", icon: FiMapPin },
   { label: "Reviews", href: "#testimonials", icon: FaStar },
 ];
@@ -30,7 +29,6 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-ink">
-      {/* Navbar — fixed to the viewport, gains a solid backdrop once scrolled */}
       <header
         className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-6 transition-all duration-300 md:px-10 ${
           isScrolled
@@ -57,7 +55,7 @@ export default function Hero() {
           ))}
         </nav>
 
-        <Button variant="outline" className="hidden !px-5 !py-2.5 text-xs md:inline-flex">
+        <Button variant="outline" className="large-screen-navbar-btn hidden !px-5 !py-2.5 text-xs md:inline-flex">
           Book a Table
         </Button>
 
@@ -133,11 +131,9 @@ export default function Hero() {
       </video>
 
       {/* Dark gradient overlay for legibility + brand tone */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/60 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/20 to-transparent" />
 
-      {/* Signature ember motif */}
-      <EmberField />
 
       <motion.div
         variants={staggerContainer}
@@ -166,7 +162,7 @@ export default function Hero() {
           className="max-w-lg text-base leading-relaxed text-taupe md:text-lg"
         >
           We're a coffee house on Victoria Street in Edinburgh. Nothing
-          here is rushed — we pull every cup slow and mean it.
+          here is rushed. We pull every cup slow and mean it.
         </motion.p>
 
         <motion.div variants={heroReveal} className="flex flex-wrap items-center gap-5 pt-2">
@@ -181,14 +177,14 @@ export default function Hero() {
           <div>
             <p className="font-display text-3xl">8k+</p>
             <p className="text-xs uppercase tracking-widest text-taupe">
-              Cups We Pour Each Month
+              Happy Customers
             </p>
           </div>
           <div className="h-10 w-px bg-ink-line" />
           <div>
             <p className="font-display text-3xl">4.9</p>
             <p className="text-xs uppercase tracking-widest text-taupe">
-              Rating, Mostly From Regulars
+              Average Rating
             </p>
           </div>
         </motion.div>

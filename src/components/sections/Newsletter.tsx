@@ -26,14 +26,14 @@ export default function Newsletter() {
         className="mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl border border-bark/10 bg-linen-soft px-8 py-16 text-center"
       >
         <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
-          Worth Knowing About
+          Don't Miss What's Brewing
         </span>
         <h2 className="font-display text-3xl leading-tight text-bark md:text-4xl">
-          Get first dibs on the new stuff.
+          Be the first through the door.
         </h2>
         <p className="max-w-md text-base leading-relaxed text-taupe-soft">
           We'll email you when a new bag hits the shelf or something
-          seasonal shows up on the menu — maybe once a month, usually less.
+          seasonal shows up on the menu. Maybe once a month, usually less.
           No spam, we genuinely don't have time for that.
         </p>
 

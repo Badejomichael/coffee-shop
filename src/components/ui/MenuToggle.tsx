@@ -15,7 +15,7 @@ export default function MenuToggle({ isOpen, onClick }: MenuToggleProps) {
       onClick={onClick}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
-      className="relative z-30 flex h-10 w-10 flex-none items-center justify-center text-ivory md:hidden"
+      className="relative z-30 flex h-10 w-10 flex-none items-center justify-center text-ivory lg:hidden"
     >
       <motion.span
         className="absolute h-[1.5px] w-6 rounded-full bg-current"

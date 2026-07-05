@@ -1,14 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiMapPin, FiClock, FiPhone, FiExternalLink } from "react-icons/fi";
+import { FiMapPin, FiClock, FiPhone } from "react-icons/fi";
 import { fadeInLeft, fadeInRight } from "@/animations/variants";
 
 const address = "12 Victoria Street, Edinburgh EH1 2JL";
 const encodedAddress = encodeURIComponent(address);
 
-// Directs to the Google Maps app on mobile, or maps.google.com in a new tab on desktop
 const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+const appleMapsUrl = `https://maps.apple.com/?address=${encodedAddress}`;
 const embedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
 
 const details = [
@@ -30,6 +31,16 @@ const details = [
 ];
 
 export default function Location() {
+  // Defaults to Google Maps (works everywhere); switches to Apple Maps
+  // on iOS/macOS so tapping the map opens whichever app the person
+  // actually has set up on their device.
+  const [mapsUrl, setMapsUrl] = useState(googleMapsUrl);
+
+  useEffect(() => {
+    const isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+    if (isApple) setMapsUrl(appleMapsUrl);
+  }, []);
+
   return (
     <section id="location" className="bg-linen px-6 py-28 md:px-10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:items-stretch">
@@ -42,7 +53,7 @@ export default function Location() {
         >
           <div className="flex flex-col gap-4">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
-              Visit Us
+              Come Find Us
             </span>
             <h2 className="font-display text-4xl leading-[1.1] text-bark md:text-5xl">
               On one of Edinburgh's
@@ -51,8 +62,8 @@ export default function Location() {
             </h2>
             <p className="max-w-md text-base leading-relaxed text-taupe-soft md:text-lg">
               Tucked into the curve of Victoria Street, just below the
-              castle. Look for the oak-framed door and the smell of a fresh
-              roast.
+              castle. Follow the smell of fresh roast to the oak-framed
+              door, you can't miss it.
             </p>
           </div>
 
@@ -74,31 +85,24 @@ export default function Location() {
         </motion.div>
 
         <motion.a
-          href={googleMapsUrl}
+          href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
           variants={fadeInRight}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="group relative block min-h-[360px] overflow-hidden rounded-2xl border border-bark/10 shadow-lg"
-          aria-label="Open Ember & Oak's location in Google Maps"
+          className="relative block min-h-[360px] cursor-pointer overflow-hidden rounded-2xl border border-bark/10 shadow-lg"
+          aria-label="Open Ember & Oak's location in Maps"
         >
           <iframe
             src={embedUrl}
-            className="pointer-events-none h-full w-full min-h-[360px] grayscale-[15%]"
+            className="pointer-events-none h-full w-full min-h-[360px]"
             style={{ border: 0 }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Ember & Oak location map"
           />
-
-          {/* Click affordance overlay */}
-          <div className="absolute inset-0 flex items-end justify-end bg-ink/0 p-4 transition-colors duration-300 group-hover:bg-ink/10">
-            <span className="flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold uppercase tracking-widest text-ember opacity-90 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
-              Open in Google Maps <FiExternalLink size={13} />
-            </span>
-          </div>
         </motion.a>
       </div>
     </section>

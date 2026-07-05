@@ -39,7 +39,7 @@ export default function About() {
           className="flex flex-col gap-6"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
-            Our Story
+            Why We Do It This Way
           </span>
           <h2 className="font-display text-4xl leading-[1.1] text-ivory md:text-5xl">
             From bean to cup,
@@ -47,7 +47,7 @@ export default function About() {
             <em className="italic text-ember">a slower craft.</em>
           </h2>
           <p className="text-base leading-relaxed text-taupe md:text-lg">
-            Every pour here gets finished by hand — milk steamed to a
+            Every pour here gets finished by hand. Milk steamed to a
             whisper, poured slow enough to bloom into a pattern. It's a small
             thing, repeated a few hundred times a day, and we've never found
             a good reason to rush it.
@@ -55,7 +55,7 @@ export default function About() {
           <p className="text-base leading-relaxed text-taupe md:text-lg">
             We buy directly from growers we've actually met, roast in
             batches through the week rather than all at once, and let
-            whoever's behind the counter decide when a cup is ready — not a
+            whoever's behind the counter decide when a cup is ready not a
             timer.
           </p>
 

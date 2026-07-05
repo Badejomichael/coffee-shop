@@ -78,7 +78,7 @@ export default function Footer() {
 
       <p className="pt-8 text-center text-xs text-taupe-soft">
         © {new Date().getFullYear()} Ember &amp; Oak Coffee House. All rights
-        reserved.
+        reserved.   
       </p>
     </footer>
   );

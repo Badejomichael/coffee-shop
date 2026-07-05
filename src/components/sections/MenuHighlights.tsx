@@ -14,13 +14,13 @@ export default function MenuHighlights() {
     <section id="menu" className="bg-linen px-6 py-28 md:px-10">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="The Menu"
+          eyebrow="What We're Known For"
           title={
             <>
               The Signature <em className="italic text-ember">Pour</em>
             </>
           }
-          subtitle="These are the three drinks people order most. Start with whichever sounds good."
+          subtitle="The three cups regulars ask for by name. Start with whichever sounds good."
           tone="light"
         />
 

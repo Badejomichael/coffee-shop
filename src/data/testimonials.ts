@@ -39,7 +39,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t5",
-    name: "Naomi Osei",
+    name: "Noah Osei",
     location: "London, UK",
     quote:
       "My standing order the moment I'm back in Edinburgh: a Velvet Cappuccino, no rush.",
