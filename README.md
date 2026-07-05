@@ -124,8 +124,8 @@ defining new variants inline, so the whole site's motion stays consistent.
 
 ## Notes
 
-- **No backend.** The newsletter form and "Book a Table" button are UI only
-  — wire them up to your email provider / booking system of choice.
+- **No backend.** The newsletter form and "Book a Table" button are UI only.
+  Wire them up to your email provider / booking system of choice.
 - **No API keys needed.** The Google Maps embed uses the keyless
   `google.com/maps?...&output=embed` URL, which is fine for demo and small
   business use but has no SLA for high-traffic production use, consider
