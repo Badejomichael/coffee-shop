@@ -6,7 +6,7 @@ export const menuItems: MenuItem[] = [
     name: "Ember Espresso",
     origin: "Yirgacheffe, Ethiopia",
     description:
-      "Pulled slow and strong. There's a bit of dark chocolate and dried cherry in the finish — it's not for the faint of heart.",
+      "Pulled slow and strong. There's a bit of dark chocolate and dried cherry in the finish, it's not for the faint of heart.",
     price: "£3.60",
     image: "/images/menu/espresso.jpg",
   },
